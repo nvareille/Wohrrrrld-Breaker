@@ -1,0 +1,24 @@
+{
+  "uuid": "2b7a04fa-d6bf-4bf5-8a00-efa6a0e1fe20",
+  "shortName": "wohrrrrld breaker",
+  "longName": "wohrrrrld breaker",
+  "companyName": "Aldeo Labs",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": [
+	{"type": "png", "name": "DRAGON", "file": "tiny_dragon_middle.png"},
+   	{"type": "png", "name": "DRAGON_LOVE", "file": "tiny_dragon_love.png"},
+   	{"type": "png", "name": "DRAGON_STRENGTH", "file": "tiny_dragon_starve.png"},
+	{"type": "png", "name": "UP", "file": "up.png"},
+	{"type": "png", "name": "DOWN", "file": "down.png"},
+	{"type": "png", "name": "SELECT", "file": "select.png"}
+    ]
+  }
+}
