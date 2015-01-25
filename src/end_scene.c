@@ -37,15 +37,15 @@ static void	change_layer_pos()
 static void	click()
 {
   window_single_click_subscribe(BUTTON_ID_UP, change_layer_pos);
-window_single_click_subscribe(BUTTON_ID_DOWN, change_layer_pos);
-window_single_click_subscribe(BUTTON_ID_SELECT, choice);
+  window_single_click_subscribe(BUTTON_ID_DOWN, change_layer_pos);
+  window_single_click_subscribe(BUTTON_ID_SELECT, choice);
 }
 
 static void	load()
 {
   Game		*game = USER_PTR;
 
-game->pos = false;
+  game->pos = false;
   game->layer = create_invert_layer(48, 35, 53, 30);
 }
 
