@@ -13,7 +13,7 @@ static void	timer_callback(void *data, Timer *t)
 {
   t->active = false;
   window_stack_pop(true);
-  game_scene();
+  main_menu_scene();
 }
 
 static void	load()
@@ -26,6 +26,11 @@ static void	exec(void *data)
   Game		*game = data;
 
   srand(time(NULL));
+  if (!persist_exists(LOGIN))
+    {
+      persist_write_string(LOGIN, "Nobody");
+      persist_write_int(SCORE, 0);
+    }
   game->img[0] = create_img_pos(RESOURCE_ID_DRAGON, 20, 80);
   game->img[1] = create_img_pos(RESOURCE_ID_DRAGON_LOVE, 60, 90);
   game->img[2] = create_img_pos(RESOURCE_ID_DRAGON_STRENGTH, 47, 70);
@@ -38,7 +43,7 @@ static void	exec(void *data)
 int		main()
 {
   Game		game;
-  
+
   app_init(&game, exec);
   return (0);
 }

@@ -91,10 +91,10 @@ static void	graphic(Layer *l, GContext *ctx)
 	draw_img_pos(game->arrow[game->input[count]], 115, 15 + count * 20, ctx);
       ++count;
     }
-  putstr("Time:", 0, -3, ctx);
-  putstr(game->time_left, 26, -3, ctx);
-  putstr("Score:", 80, -3, ctx);
-  putstr(game->score_disp, 116, -3, ctx);
+  putstr("Time:", 0, 0, ctx);
+  putstr(game->time_left, 26, 0, ctx);
+  putstr("Score:", 80, 0, ctx);
+  putstr(game->score_disp, 116, 0, ctx);
   draw_line(0, 12, 144, 12, ctx);
   anims[game->animation](game, ctx);  
   if (game->combo)

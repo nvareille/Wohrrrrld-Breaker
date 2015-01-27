@@ -1,6 +1,9 @@
 #ifndef GAME_H_
 # define GAME_H_
 
+# define LOGIN 0
+# define SCORE 1
+
 # include "Khelljyr/Khelljyr.h"
 
 typedef struct	s_Game
@@ -20,7 +23,10 @@ typedef struct	s_Game
   bool		pos;
 }		Game;
 
+void		main_menu_scene();
+void		hiscores_scene();
 void		game_scene();
 void		end_scene();
+void		new_record_scene();
 
 #endif
