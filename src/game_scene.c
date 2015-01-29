@@ -33,9 +33,8 @@ static void	decal_arrow(Game *game)
 
 static void	wait_for_order(Game *game, GContext *ctx)
 {
-  int		size;
-
-  size = 0;
+  int		size = 0;
+  
   draw_img(game->img[0], ctx);
   while (size < 5)
     {
@@ -168,7 +167,14 @@ static void	load()
   gen_arrow(game);
   strcpy(game->time_left, "20");
   strcpy(game->score_disp, "0");
-  create_timer(1000, timer_callback, game);
+  game->timer = create_timer(1000, timer_callback, game);
+}
+
+static void	unload()
+{
+  Game		*game = USER_PTR;
+
+  clean(game->timer);
 }
 
 static void	up()
@@ -201,5 +207,5 @@ static void	click()
 
 void		game_scene()
 {
-  create_basic_scene_fullscreen(graphic, load, NULL, click);
+  create_basic_scene_fullscreen(graphic, load, unload, click);
 }

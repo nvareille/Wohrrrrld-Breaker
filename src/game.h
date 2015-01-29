@@ -21,6 +21,7 @@ typedef struct	s_Game
   short		combo;
   InvertLayer	*layer;
   bool		pos;
+  Timer		*timer;
 }		Game;
 
 void		main_menu_scene();
