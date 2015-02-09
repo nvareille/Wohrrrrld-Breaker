@@ -100,26 +100,28 @@ static void	graphic(Layer *l, GContext *ctx)
     putstr_font("COMBO !", FONT_KEY_GOTHIC_28, 0, 20, ctx);
 }
 
-static void	timer_callback(void *data, Timer *t)
+static bool	timer_callback(void *data, Timer *t)
 {
   Game		*game = data;
 
   if ((--game->time) == -1)
     {
-      t->active = false;
-      window_stack_pop(true);
+      clean(t);
+      window_pop();
       end_scene();
+      return (false);
     }
   snprintf(game->time_left, sizeof(game->time_left), "%d", game->time == -1 ? 0 : game->time);
   refresh();
+  return (true);
 }
 
-static void	reset_break(void *data, Timer *t)
+static bool	reset_break(void *data, Timer *t)
 {
   Game		*game = data;
 
   game->animation = 0;
-  t->active = false;
+  return (false);
 }
 
 static void	try_click(Game *game, int button)
@@ -154,6 +156,17 @@ static void	try_click(Game *game, int button)
   refresh();
 }
 
+static void	play_message(DictionaryIterator *it, void *data)
+{
+  message_add_int(0, 1, it);
+}
+
+static void	send_play()
+{
+  message_add(play_message, NULL, NULL, NULL);
+  message_process();
+}
+
 static void	load()
 {
   Game		*game = USER_PTR;
@@ -168,6 +181,7 @@ static void	load()
   strcpy(game->time_left, "20");
   strcpy(game->score_disp, "0");
   game->timer = create_timer(1000, timer_callback, game);
+  send_play();
 }
 
 static void	unload()

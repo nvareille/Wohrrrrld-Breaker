@@ -9,11 +9,11 @@ static void	graphic(Layer *layer, GContext *ctx)
   draw_img_pos(game->img[1], 40, 80, ctx);
 }
 
-static void	timer_callback(void *data, Timer *t)
+static bool	timer_callback(void *data, Timer *t)
 {
-  t->active = false;
-  window_stack_pop(true);
+  window_pop();
   main_menu_scene();
+  return (false);
 }
 
 static void	load()
@@ -26,6 +26,7 @@ static void	exec(void *data)
   Game		*game = data;
 
   srand(time(NULL));
+  message_init(128, 128, NULL, NULL);
   if (!persist_exists(LOGIN))
     {
       persist_write_string(LOGIN, "Nobody");

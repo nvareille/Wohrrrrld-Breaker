@@ -17,7 +17,7 @@ static void	choice()
 {
   Game		*game = USER_PTR;
 
-  window_stack_pop(true);
+  window_pop();
   if (!game->pos)
     game_scene();
 }
